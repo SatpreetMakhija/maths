@@ -1,0 +1,82 @@
+\documentclass{report}
+\usepackage{amsthm} % this is required for maths theorems
+\usepackage{todonotes}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref} % Enable hyperlinks
+
+\begin{document}
+
+\newcommand{\vectorv}{v = a_1v_1 + a_2v_2 + ... + a_nv_n}
+
+\listoftodos
+
+
+\chapter{Vector Spaces}
+
+\chapter{Finite-Dimensional Vector Spaces}
+\section{Span and Linear Independence}
+
+Test case to create generic vector using \textit{vectorv} command: $\vectorv$
+
+\section{Bases}
+
+A \textit{basis} of $ V $ is a list of vectors in $V$ that is linearly independent and spans $V$. \\
+How do we check if a given list of vectors is a basis or not?\\
+One option is to check if they are linearly independent and span the space.But, we have a more beautiful solution. A criteria that when satisfied ensures that the given list of vectors is a basis.
+
+\newtheorem{criteria-for-basis}{Criteria for basis}
+
+
+
+\begin{criteria-for-basis}
+	A list $ v_1, v_2, ..., v_n $ of vectors span $V$ iff every $v$ in $V$ can be written \textit{uniquely} in the form \\
+	$ v = a_1v_1 + ... + a_nv_n$
+\end{criteria-for-basis}
+
+This is similar to the criteria of linear independence which is encoded by the criteria that a list of vectors are linearly independent \textit{iff} their sum equals zero only when all coefficients are zero themselves.
+
+\textbf{How will we determine if given a list of $k$ vectors for a space with dimension $m$, and $k >> m$, which $m$ vectors in $k$ form a basis for $V$, if any? Is there an algorithm for it?}\\
+Clearly, there are $C(k, m)$ options available. Given a particular combination, is there an algorithm to determine if they meet the criteria equation of linear independence. \todo{Algorithm to find basis given a list of vectors}\\
+
+\newtheorem{subspace-and-another-sum-to-space}{Every subspace of$V$ is part of a direct sum equal to V}
+\begin{subspace-and-another-sum-to-space}
+Suppose $V$ is finite dimensional and $U$ is a subspace of $V$. Then \textbf{there exists} a subspace $W$ of $V$ such that $V = U + W$. 
+\end{subspace-and-another-sum-to-space}
+
+
+Because $V$ is finite dimensional, so is $U$. Let $u_1, u_2, ..., u_m$ be the basis for $U$. Clearly, this basis can be extended by adding $w_1, w_2, ..., w_k$ such that $u_1, u_2, ..., u_m, w_1, ..., w_k$ span $V$. 
+
+Let $W=span(w_1,...,w_k)$. We need to show $V = U + W$ and $V = U \intersection W = {0}$.\\ 
+For any $v \in V$, because $u_1,...,u_m,w_1,...w_k$ span V, there exists $a_1,...a_m,b_1,...,b_k$ such that $v = a_1u_1 + ... a_mu_m + b_1w_1 + ... + b_kw_k = u + w$. $\therefore V = U + W$.\\
+Now, we need to show the intersection property.Let $v \in U \intersection W$. Then, there exists scalars $a_1,...a_m$ and $b_1,...,b_k$ such that \\
+$v = a_1u_1 + ... + a_mu_m = b_1w_1 + ... + b_kw_k$ or $a_1u_1 + ... + a_mu_m + b_1w1 + b_kw_k = 0$. Since, all vectors are independent, $a_1 = ... = a_m = b_1 + ... b_k$. Thus, $v=0$. Note, we had taken any arbitrary $v$ part of the intersection\dots
+
+Hence, proved. $\qed$
+
+
+\section*{Exercises 2.B}
+\subsection*{5}
+Intuitively, there cannot exist such a basis because if there is no polynomial $p$ of degree 2, how can we represent $P_3(R)$. One way to solve this is take any 4 poynomials, assume they are independent, write their general, write their sum (the 4 polynomials) and we won't have a single term with degree 2. Therefore, there cannot exist such a basis. Hence proved.
+
+\subsection*{6}
+We need to show new list is also a basis. The criteria for basis is unique representation. As a helper method, we first show linear independence of the new list. That's easy. Assume non-independence and write independence criteria equation with assumption one of the coefficients is non-zero. Reshuffle all new terms such that they are written using original basis. This leads to contradiction as now a linear combination of original basis with at least one coefficient non-zero on the LHS and 0 on RHS. Since, all coefficients need to be 0, non-independence of the new list is false. Hence, independence shown.\\
+Next, we need to show unique representation using the new new list. Assume two sets of coefficients lead to a common vector. Write the two representations with LHS = RHS. Because, we know the new list is independent, this leads to all corresponding coefficients in the two sets being equal. Hence, unique representation. Hence, proved. 
+
+As a side note, any linear combination of the new list can be rewritten as a combination of the original basis and the original basis spans $V$. Hence, the new list also spans $V$. Another way to think of it is every $v$ can be written as a linear combination of the original basis and that representation can be written as a linear combination of the new list. That is the definition of spanning. For every $v$, there exists a representation using the list.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+

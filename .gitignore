@@ -1,0 +1,25 @@
+# Auxiliary files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.tdo
+
+# Intermediate and temporary files
+*.dvi
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+
+# Backup files
+*.bak
+*.tmp
+*.sav
+
+# Final compiled files (optional)
+*.pdf
+
