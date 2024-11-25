@@ -64,6 +64,78 @@ Next, we need to show unique representation using the new new list. Assume two s
 As a side note, any linear combination of the new list can be rewritten as a combination of the original basis and the original basis spans $V$. Hence, the new list also spans $V$. Another way to think of it is every $v$ can be written as a linear combination of the original basis and that representation can be written as a linear combination of the new list. That is the definition of spanning. For every $v$, there exists a representation using the list.
 
 
+\section{Dimension}
+The dimension of a vector space $V$ is defined as the length of its basis. Every basis for a given vector space has the same length which can be stated below. 
+
+\subsection{Basis length does not depend on basis}
+
+\paragraph{outline of proof}
+
+There's a logical statment that will help us. When we say $x$ is less than and equal to $y$ and $y$ is less than or equal to $x$, i.e., $x \leq y$ and $y \leq x$, we get $x=y$. Example, take two numbers $2 \leq 4$and $4 \leq 2$, the only way other criteria is fullfilled is is $4$ changes to $2 $. 
+\paragraph{proof} 
+
+Let $B_1,B_2$ be two basis for $V$. $B_1$ is linearly independent and $B_2$ spans $V$. $\therefore$, $len(B_1) \leq len(B_2)$. Note, we are using the property that the length of the linearly independent list is less than or equal to the length of the spanning list. /todo{Prove this statement without looking at the book}. Similarly, we show $len(B_1) \leq len(B_2)$. Hence, $len(B_1) = len(B_2)$. 
+
+
+\subsection{Changing field changes the dimension of a vector space}
+Let's take $R_2$ as the vector space defined over $R$. The dimension is obviously $2$. But, if the same vector space $R_2$ is defined over field $C$, the dimension is 1. First of all, $c(x,y) \neq (cx,cy)$. That's not how we can multiply a complex number with a $v \in V$. Actually, the scalar multiplication is defined by the field not the vector space. So, when $R_2$ is defined over $R$, $c(x,y) = (cx,cy)$. When defined over $C$, $c(x,y) = (a+b\iota) (x + y\iota) = (ax-by) + (ay+bx)\iota$ and the we reinterpret it as an element of $R_2$, i.e., $(ax-by),(ay+bx)$. This reinterpretation is allowed because the scalar multiplication is defined as an operation $\lambda v$ such that the result is still in  $V$ and that this holds true $\forall \lambda \in F$, $F$ is the field and  $v \in V$.
+
+\paragraph{show $(5,7),(4,3)$ is a basis of $F$.} 
+
+Basis definition says list must span $F$ and it must be linearly independent. Let's use the independent criteria check. $a(5,7) + b(4,3) = 0$ iff $a = b = 0$. This can be solved by setting up a system of linear equations:
+\[
+5a + 4b = 0 and 7a + 3b = 0 
+.\] 
+\[
+b = \frac{-5a}{4}
+.\] 
+\[
+\therefore 7a + 3\frac{-5a}{4} = 0 
+.\] 
+\[
+a = 0 
+.\] 
+\[
+b = 0 
+.\] 
+Therefore, they are linearly independent. We know that the length of basis for $F_2$ is $2$. And here this independent list also has that length. So, we don't need to check whether it spans $F_2$ or not. We have another rule. Basis check needs two criteria, linear independence and spanning. If we know the list in question has the length equal to that of the $\dim V$, we only need to check one of the two criteria. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
