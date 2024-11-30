@@ -66,6 +66,7 @@ As a side note, any linear combination of the new list can be rewritten as a com
 
 \section{Dimension}
 The dimension of a vector space $V$ is defined as the length of its basis. Every basis for a given vector space has the same length which can be stated below. 
+\paragraph{commentary} How do I imagine the concept of dimension? It's a visual image. Imagine a 3 dimensional cartesian plane. Take some vectors (say you take 2) such that they don't lie on top of each other. This ensures they are linearly independent. However number of directions they can cover is the dimension for that space. So, for example, take two set of vectors. $v_1,v_2$ and $v_3,v_4$. $v_1,v_2$ span a plane. $v_3,v_4$ also span a plane. If both sets of vectors are linearly independent, then in total they'll cover $4$ directions but the space itself is limited to dimension $3$. Hence, it must be the case that the at least one of the vectors from the first set is covered in the span of the second set or vice versa. 
 
 \subsection{Basis length does not depend on basis}
 
@@ -99,6 +100,103 @@ a = 0
 b = 0 
 .\] 
 Therefore, they are linearly independent. We know that the length of basis for $F_2$ is $2$. And here this independent list also has that length. So, we don't need to check whether it spans $F_2$ or not. We have another rule. Basis check needs two criteria, linear independence and spanning. If we know the list in question has the length equal to that of the $\dim V$, we only need to check one of the two criteria. 
+
+
+
+
+\subsection*{2.41 Example}
+Show that $1, (x-5)^2, (x-5)^3 $ is a basis of subspace $U$ of $P_3(R)$ defined by 
+\[
+	U = {p \in P_3(R): p'(5)=0} 
+.\]
+
+Subspace contains elements. Here the elements are such $p$'s whose differentiation at $5 = 0$. Clearly, the basis are independent. Their linear combination will be of the form $p(5) = a_1 +a_2 (x-5)^2 + a_3(x-5)^3$. 
+\paragraph{outline} Remember, basis means they the vectors are independent and span the subspace.  We'll show that the $\dim U = 3$. Remember, we came up with a rule that if the basis of the right length, we need to prove only one of the two, independence and spanning. We'll show independence. 
+\paragraph{proof} First, we'll show indepedence. 
+\[
+a_1 + a_2(x-5)^2 + a_3(x-5)^3 = 0 
+.\] 
+Right hand side does not have any $x^3$ term. $\therefore c = 0$. If $c=0$, there is a term $x^2$ again on left hand side but not on the right hand side. Therefore, $b = 0$. This makes $a=0$. Hence, all the coefficients are $0$. 
+
+We're done with the independence criteria. $4 = \dim V \geq \dim U \geq 3$. Clearly, $U$ doesn't contain all the elements of $P_3$. Take $a_1 + a_2x_2^2 + a_3x_^3 + a_4x_4^4$ such that $p' = 7$. By the very definition of $U$, it cannot have such polynomials. Hence, $\dim U = 3$ because if we make it $4$ then when we extend the basis by even one, it exceeds $\dim V$. So, $\dim U = 3$ and given independent list is of length  $3$. Hence, proved that $U$ is a basis. $\qed$ 
+
+
+\subsection*{2.42 Spanning list of the right length is a basis}
+Suppose $V$ is a finite-dimensional. Then every spanning list of vectors in $V$ with length $\dim V$ is a basis for $V$. 
+\paragraph{proof} Let $\dim V = n$ and let $v_1 \dot v_n$ span $V$. The spanning list can be reduced to a basis for $V$. But, even reduction by $1$ will make the $\dim V < 4$. Hence, given list must already be a basis. $\qed$
+
+\subsection*{2.43 \dim(U + V) = \dim U + \dim V - \dim (U \cap V)}
+\todo{write proof without consulting book}
+\paragraph{commentary} $U$ and $V$ are like two small barrels inside a big barrel. Dimension represents the minimum elements required from each small barrel to fill it using their span. Either the barrels are non-intersecting or intersecting. If they are non-intersecting, the above statement holds true as then the minimum vectors required to represent $U \cap V$ is trivial as the space is empty. If they are intersecting, there can be basis vectors between the two basis sets of these barrels that are linearly dependent on each other. We uncount them by reducing this sum by the dimension required to represent $U \cap V$.
+
+\subsection*{direct sum}
+\paragraph{mental model} If you think of the vector space $V$ as a barrel, then there are many small barrels inside it. These are the subspaces of $V$. Each of these barrels are non-overlapping, i.e., the barrels are indepedent with no common vector. This analogy works for seeing the indepedendence part of the barrels. 
+
+Now, imagine the vector subspace spanned by $(x,0)$. It's a horizontal line. There's another subspace spanned by $(0,y)$ which is a vertical line. These are two small barrels. The sum of elements from these two barrels can be outside the barrels. Any $(x,y)$ formed by the sum of these two subspaces is not part of the original barrels. But, to represent the new vector from their sum, you need contribution from both the barrels.
+
+
+
+\section*{2.C Exercises}
+
+\todo{comp lete Dimension exercises.}
+
+
+
+
+
+\chapter{Linear Maps}
+\section{Defintion: Linear Maps}
+\paragraph{mental model} If vector spaces are barrels then linear maps are pipes that connect these barrels. A linear map or it's pipe has one specific property. Say there exists a vector $w = u + v$ in the first barrel (domain). You send $w$ directly from the pipe or send  $u$ and $v$ separately and then sum the results up. You'll get the same result. This shows linear maps preserve addition. Linear maps are really good at parallelisation then. More than that if say we consider $u = a_1v_1 + a_2v_2$ where $v_1,v_2$ are basis vectors, the property of a  linear pipe say just send each of the basis once and find their mappings $Tv_i$. Any $u \in V$, will be a sum of these basis only. Hence, if we know what the basis maps to we know all about where each vector in $V$ will go to in the next barrel $W$. 
+
+\section{Theorem: Fundametal theorem of linear maps}
+\[
+\dim V = \dim null T + \dim range T$
+.\]
+
+\paragraph{mental model} Why is this statement obvious? Let's talk about $T$ first. A linear map $T$ gets defined by where the basis vectors of $V$ go. Once you know that, you know the mapping for each vector $v$ in $V$. This is because of the definition of linear maps. It is clear that the basis vectors that get mapped to the null $T$, their dimension is com pletely consumed by $null T$. The question is why would the rest of the left dimensions must map to such a range of $T$ that the range's dimension is the left over dimensions. Another way of stating it is that for each $v_i$ which is a basis vector and $T(v_i) \neq 0$, $Tv_i$ must be independent, i.e., all $Tv_i$ 's must be independent. Why? Let's say that that is not the case and they are not linearly independent. Let $aTv_1 = bTv_2 \implies aTv_1-aTv_2 = 0 \implies T(av_1 - bv_2) = 0$. This means $av_1 -bv_2 \in null T$ but that cannot be the case that we've already included what's there in the null space of T. This leads to contradition. \todo{find a stronger mental model for fundamental theorem of linear maps}
+
+
+\section{Isomorphic spaces}
+Two vector spaces are the same if there exists an isomorphic linear map (one to one and surjective) between the two vector spaces. What they mean by \textit{same} is that the linear maps just renames the elements of the two vector spaces. Inherently they are the same. Say, for example, take a linear map $L: (i,j) -> i + jx $. The first is a space $ R_{2}$ and the second space is $P_1$ and yet they are the same structurally. But, why is even one such a linear map to conclude so much about the two vector spaces? By showing one to one and surjective we show two things, every $v$  in $V$ when goes to $W$ via $T$ it gets mapped to a unique $w$ and no two $v$ 's will have the same output. Hence there is no loss of information. We've only renamed elements. The second surjective shows that all of $W$ is reachablefrom  $V$ and because we already have one-to-one mapping, we can go back from $W$ to $V$ easily without changing anything. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
