@@ -1,5 +1,5 @@
 \documentclass{report}
-\usepackage{amsmath, amssymb}
+\usepackage{amsthm, amssymb, amsmath}
 \usepackage{todonotes}
 \usepackage[colorlinks=true, linkcolor=blue]{hyperref} % Enable hyperlinks
 
@@ -99,6 +99,182 @@ Let's assume that $a_n$ by the given recursive formula uniquely defined $a_n$. W
 Let $m$ be a natural number, we define addition of zero to $m$ as $0 + m := m$. We give a recursive defintion for adding. Let's say we know how to perform $n + m$. Therefore, adding  $n++$ to $m$ is defined as $\left( n++ \right) +m := \left( n+m \right) ++$.
 
 For example, say, we need to add $2 + 5$.  $\left( 1++ \right) +5 = \left( 1 + 5 \right) ++ = \left( \left( 0++ \right) +5 \right) ++ = \left( \left( 0 + 5 \right) ++ \right) ++ = \left( 5++ \right) ++ = 6++ = 7 $
+\paragraph{Commentary:} This definition is enough to deduce everything about addition of natural numbers!
+\subsection{Lemma} For any natural number $n$, $n+0 = n$. 
+
+
+\paragraph{Commentary:} Note, in our recursive defintion, we have defined only $0+n=n$ and we don't know yet that for any $a,b \in \mathbb{N}$, $a+b=b+a$.
+\paragraph{Proof:} Take base case, $n = 0$. $0+0=0$. This is true by our recursive defition's base case. Assume, $n+0 = n$ for $n$. We need to show $(n++)+0 = n++$ and we are done with our proof by induction. 
+
+ $\left( n++ \right) +0 = \left( n + 0 \right) ++ $ by our defintion of addition. $\left( n+0 \right) ++ = n++$ because of our induction assumption for $n$. Hence, proved.
+
+ \subsection{Lemma} For any natural numbers $n,m$ $n+\left( m++ \right) = \left( n+m \right) ++$.
+
+\paragraph{Commentary:}Again, we cannot deduce this from our recursive defintion  $\left( n++ \right) + m = \left( n+m \right) ++$ because we do not know $a+b = b+a$. 
+
+\paragraph{Proof: } We'll try this by induction on $n$ (and keep $m$ fixed). Let's take the base case at $n=0$. $0+\left( m++ \right) = m++ = \left( 0 + m \right) ++ $. The stamenent holds for the base case.
+
+Assume, $n+\left( m++ \right) = \left( n+m \right) ++$. We now need to show that $\left( n++ \right) + \left( m++ \right) = \left( \left( n++ \right) + m \right) ++ $
+
+$\left( n++ \right) + \left( m++ \right) = \left( n+\left( m++ \right)  \right) ++ $ by the recursive defintion of addition.
+$\left( n + \left( m++ \right)  \right) ++ = \left( \left( n+m \right) ++ \right) ++ $ by the the induction step taken for $n$. 
+$\left( \left( n++ \right) +m \right) ++$ by the defintion of recursive defntion of addition. Hence, proved. 
+
+\subsection*{Corollary}
+$n++ = n + 1 $ 
+\paragraph{Commentary: }Why would this hold because of Lemma  $2.2.2$ and Lemma $2.2.3$. 
+
+\paragraph{Proof:} $n+1 = n + \left( 0++ \right) = \left( n+0 \right) ++$ by Lemma $2.2.3$. $\left( n+0 \right) ++ = n++$ because of Lemma $2.2.2$. Hence, proved.
+
+\subsection{Proposition} Addition is commutative. For any natural numbers $n,m$, $n+m = m+n$. 
+
+\paragraph{Proof: } We can prove this by induction. (note, anytime there's a proof of applying it for all numbers, induction really helps). We'll fix $m$. Take  $n=0$. $0+m = m$ by defition of base case for addition. $m+0 = m$ by Lemma $2.2.2$. Base case is done.
+
+Assume $n+m = m+n$. This is our induction step. We now need to show it holds for $n++$, i.e., $\left( n++ \right) + m = m + \left( n++ \right) $. 
+LHS, $\left( n++ \right) + m = \left( n+m \right) ++	$ by the recursive definition of addition. $\left( n+m \right) ++ = \left( m+n \right) ++$ by our induction step.
+RHS, $m+ \left( n++ \right) = \left( m+n \right)++ $ by Lemma $2.2.3$.
+
+LHS = RHS. Hence proved. $\qed$
+
+\subsection{Proposition} Addition is associative. For any natural numbers $a,b,c$, we have $(a+b)+c = a+\left( b+c \right) $.
+\todo{Write proof for Addition is associative}
+
+\subsection{Proposition} Cancellation law. Let  $a,b,c$ be natural numbers such that $a+b = a + c$. Then we have $b=c$.
+ \paragraph{Commentary: }Note, we do not have the concept of negative numbers or subtraction yet.
+\paragraph{Proof: }We'll prove this by induction. Fix $b,c$. Take base case,  $a = 0 $. $0+b = 0 + c \implies b = c$ because of base case of definition of addition.
+
+Assume $a+b = a+c \implies b = c$. We need to show $\left( a++ \right) +b =  \left( a ++ \right) + c \implies b = c $.
+
+\[
+\left( a++ \right) + b = \left( a++ \right) +c 
+.\] 
+ \[
+	 \left( a+b \right) ++ = \left( a+c \right) ++ \tag{by defintion of addition}
+.\]
+\[
+	b++ = c++ \tag{by assumption of the induction step}
+.\] 
+\[
+b = c
+.\] 
+Hence, proved by induction.  $\qed$
+
+\subsection{Definition} Positive natural numbers. A natural number $n$ is said to be positive iff it is not equal to $0$. 
+
+\subsection{Proposition} If $a$ is positive and $b$ is a natural number, then $a+b$ is positive.
+ \paragraph{Proof: } We'll use induction on $b$. Let $b = 0$. $a + b = a + 0 =  a$. Base case holds. Assume $a+b$ is positive. Then we need to show $a+\left( b++ \right) $ is positive. $a + \left( b++ \right) = \left( a+b \right) ++$ by Lemma 2.2.3. $\left( a+b \right) ++ $ cannot be zero because of Axiom $2.3$ ($n++ \neq 0$ ). Hence, $\left( a+b \right) ++$ is positive. This closes the induction. $\qed$
+
+ \subsection{Corollary} If $a$ and $b$ are natural numbers such that $a + b = 0$ then $a=b=0$.
+\paragraph{Proof: } We'll prove this by contradiction. Assume $a+b = 0 $ but $a \neq 0$ or $b \neq 0$. In either case, $a+b=0$ where one of them is not zero. But, by Proposition $2.2.8$ that cannot be the case as $a+b$ must be positive (not zero). Hence, contradiction and $a = b= 0$.  $\qed$
+
+
+\subsection{Lemma} Let  $a$ be a positive number. Then there exists exactly one natural number $b$ such that $b++ = a$.
+\paragraph{Commentary: } Note, this means there is exactly one element behind $a$. There seems to be an order between the natural numbers.
+\paragraph{Proof}: \todo{Prove}
+
+\subsection{Definition} Ordering of natural numbers. Let $n$ and $m$ be natural numbers. We say $n$ is \italics{greater than or equal to $m$} iff we have  $n = m + a$ for some natural number $a$. We write \italics{greater than or equal to} as $n\geq m $ or  $m \leq n$. We say that $n$ is strictly greater than $m$ iff $n \geq m$ and $n \neq m$. 
+
+\paragraph{Commentary: }Note, how we have used the concept of some $a$ existing such that adding it to $m$ gives us $n$. This also helps us show why there is no largest natural number because for every $n$, $n++ > n$. Hence, for the number $n ++$, there's another larger number $\left( n++ \right) ++$. 
+
+
+\subsection{Proposition} Basic properties of order for natural numbers. Let $a,b,c \in \mathbb{N}$. Then
+\begin{enumerate}
+	\item (Order is reflexive) $a \geq a$
+	\item (Order is transitive) If  $a \geq b$ and $b \geq c$, then $a \geq c$
+	\item (Order is anti-symmetric) If  $a \geq b$ and $b \geq$, then $a =b$.
+	\item (Addition preserves order)  $a \geq b$ iff $a+c \geq b+c$
+	\item  $a < b$ iff $a++ \leq b$.
+	\item  $a < b $ iff $b = a + d$ for some positive number $d$. 
+\end{enumerate}
+\paragraph{Proof: }
+\begin{enumerate}
+	\item 1
+		$a \ge a$ iff there exists  $n$ such that $a = a + n$. Let $n=0$. Therefore, $a= a + 0 = a$. Hence, proved.
+	\item
+		It is given that  $a \ge b$ and $b \ge c$. We need to show this implies $a \ge c$. There must bexist $m$ such that  $a = b + m$ and  $n$ such that $b = c + n$. Substituting value of $b$, $a = c + n + m \implies a = k + c$ where  $k$ is some natural number. Hence, by definition of ordering of natural numbers, $a \ge c$.  $\qed$   
+	\item
+		 $a = b + m$ for some  $m$ and $b = a + k$ for some $k$. Substitute value of $b$, $a = a + k + m \implies a + 0 = a + (k+m) \implies 0 = k +m $ by cancellation law (Proposition $2.2.6$). The only way this holds is iff $k = m = 0$.
+	This is because there are four situations $k,m \ne 0 \lor k=m=0, \lor k = 0 \land m \ne 0 \lor k \ne 0 \land m=0$. In all situations except $k=m=0$, we'll have a situation where  Axiom  $2.1.3$ is violated because we'll have an equation of form  $n++=0$. Hence, $a = b + m = 0 = b \implies a = b$. $\qed$ 
+\item 
+	Assume $a \ge b$. This means $a = b + m$ for some $m$. Adding $c$ on both sides,   (for which we'll need to prove this logic TODO), $a + c = b + m + c \implies \left( a +c \right) = m + (b+c)$. (We have only rearranged the terms using Proposition $2.2.4$). Therefore, by definition of greater than, we have  $a + c \ge b+c$.
+	Now assume  $a +c \ge b + c $. We need to show  $a \ge b$.  $a +c= b +c + d$ for some  $d$. 
+By cancellation law, $a = b + d$. Hence, $a \ge b$.  We are done with our proof now.
+
+\item 
+Assume 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -142,3 +318,5 @@ The negation of the above statement is
 
 
 \end{document}
+
+
