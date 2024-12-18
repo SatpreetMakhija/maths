@@ -2,7 +2,6 @@
 \usepackage{amsthm, amssymb, amsmath}
 \usepackage{todonotes}
 \usepackage[colorlinks=true, linkcolor=blue]{hyperref} % Enable hyperlinks
-
 \begin{document}
 \listoftodos
 
@@ -69,6 +68,12 @@ We'll see in the book that the results of the two are different (LHS and RHS is 
 \chapter{Natural numbers}
 Just to reiterate the different kinds of numbers we'll deal with in this book, here are they in increasing order of sophistication. Natural numbers, $\mathbb{N}$,  integers, $\mathbb{Z}$, rational numbers, $\mathbb{Q}$, real numbers, $\mathbb{R}$ and complex numbers, $\mathbb{C}$. 
 
+\section*{Axiom and definition counts in the chapter}
+\paragraph{Commentary: }Since axioms and definitions are the most important part of a book, we'll keep a track of the number of axioms and definitions in each chapter. 
+5 axioms for Peano's axioms to define natural numbers,
+1 definition of addition,
+, 1 definition of positive numbers, 1 defintion of ordering (greater than). 
+
 \section{The Peano axioms}
 The Peano axioms is one of the ways of defining natural numbers. There are other approaches such as using sets.
 We define natural numbers as that set of elements for which the following axioms hold:
@@ -85,6 +90,7 @@ It might be surprising right now why we are including this as an axiom because i
 The principle is if some property $P$ holds for $0$, that is, if $\left( P\left( 0 \right)  \right) $ is true and  $P\left( n \right) \implies P\left( n+1 \right) $ is true, then property $P$ is true for all elements in the number system. 
 
 This axiom allows us to define properties of objects for all elements.
+\paragraph{Commentary: } \todo{Why do we fix other variables and induct on only one?}
 
 \paragraph{Note our definition of natural numbers is axiomatic and not \textit{constructive}.} What I mean by that is we have not defined \textit{what} a natural number is but rather properties that a natural number holds. Any number system that follows the above mentioned axioms is a natural number system.
 
@@ -170,7 +176,6 @@ Hence, proved by induction.  $\qed$
 
 \subsection{Lemma} Let  $a$ be a positive number. Then there exists exactly one natural number $b$ such that $b++ = a$.
 \paragraph{Commentary: } Note, this means there is exactly one element behind $a$. There seems to be an order between the natural numbers.
-\paragraph{Proof}: \todo{Prove}
 
 \subsection{Definition} Ordering of natural numbers. Let $n$ and $m$ be natural numbers. We say $n$ is \italics{greater than or equal to $m$} iff we have  $n = m + a$ for some natural number $a$. We write \italics{greater than or equal to} as $n\geq m $ or  $m \leq n$. We say that $n$ is strictly greater than $m$ iff $n \geq m$ and $n \neq m$. 
 
@@ -195,14 +200,90 @@ Hence, proved by induction.  $\qed$
 	\item
 		 $a = b + m$ for some  $m$ and $b = a + k$ for some $k$. Substitute value of $b$, $a = a + k + m \implies a + 0 = a + (k+m) \implies 0 = k +m $ by cancellation law (Proposition $2.2.6$). The only way this holds is iff $k = m = 0$.
 	This is because there are four situations $k,m \ne 0 \lor k=m=0, \lor k = 0 \land m \ne 0 \lor k \ne 0 \land m=0$. In all situations except $k=m=0$, we'll have a situation where  Axiom  $2.1.3$ is violated because we'll have an equation of form  $n++=0$. Hence, $a = b + m = 0 = b \implies a = b$. $\qed$ 
-\item 
+	\item 
 	Assume $a \ge b$. This means $a = b + m$ for some $m$. Adding $c$ on both sides,   (for which we'll need to prove this logic TODO), $a + c = b + m + c \implies \left( a +c \right) = m + (b+c)$. (We have only rearranged the terms using Proposition $2.2.4$). Therefore, by definition of greater than, we have  $a + c \ge b+c$.
 	Now assume  $a +c \ge b + c $. We need to show  $a \ge b$.  $a +c= b +c + d$ for some  $d$. 
 By cancellation law, $a = b + d$. Hence, $a \ge b$.  We are done with our proof now.
+	\item Assume $a < b$. We need to show $a++ \le b$. Or in other words  $a+c=b$ for some $c$ and $a \ne b$. We'll prove this by contradiction. Assume $\neg \left( a + c \ne b \right) \land \left( a \ne b  \right) = a+c \ne b \lor a = b$. We'll show that in both cases of or, we have a contradiction. $a ++ \le b \implies \left( a++ \right) +m = b = \left( a+m \right) ++ = b$. Since $a=b$ (by our assumption, this is the second case of or), $\left( b+m \right) ++ = b$. In both cases, when $m = 0 \lor m \ne 0$, we have a contradiction as $b++ \ne b$ as this would imply $0++ = 0$. (This is a contradiction of Axiom 2.1.3). Now, we'll show the other case of or also leads to contradiction, i.e., $a+c \ne b$ will lead to contradiction. Since $a++ \le b \implies \left( a++ \right) +c = b \implies \left( a+c \right) ++ = b \implies \left( c++ \right) +a = b$. But there does not exist a number  $b$ such that  $a+c = b$ (Note, here there is no difference between  $c$ and  $c++$ for us because all we care about is some number in \mathbb{N}. Hence, contradiction. Hence, our initial assumption $\neg \left( a+c \ne b \right) \land \left( a \ne b \right) $ must be wrong. Therefore, $a+c = b \and a \ne b$. Hence, we are done with left-to-right side for our proof. We now need to show right to left follows. Assume $a++ \le b$. We need to show $a < b$. We'll again show this by contradiction. Assume $\neg \left( a < b \right) $$a++ \le b \implies \left( a++ \right) +c = b $ for some $c$.  $a++ = a + 1 = a + (0++) = a++$. Therefore, we'll replace $a++$ in our equation. We get $a+1+c = b \implies a+d = b$ where $d = c+1$. But, we now have a condition that implies $a < b$ by the definition of greator than. Hence contradiction. Hence, $a < c$. Now we are done with both directions of our proof. $\qed$
+ 
 
-\item 
-Assume 
 \end{enumerate}
+
+\subsection{Proposition: } Trichotomy of order of natural numbers. Let $a$ and $b$ be natural numbers. Then exactly one of the following statements is true: $a < b, a = b, a > b$.
+
+\paragraph{Commentary: } This is a great example to show how we can pin down what we want to say in exact terms using mathematics. We need to show that exactly one of three statements is true. We first show that no two statements can be true together. We also show that the three together also does not hold true. Then we show at least one of them is true. In simple terms, we show one statement will definitely be true and two statements cannot be true together. Hence, only one statement will be true. 
+
+\paragraph{Proof: } We show first no more than one statement is true. If $a < b$, by definition of greater than $a \ne b$. If $a > b$, by definition of smaller than $a \ne b$. If $a < b$ and $a > b$, then by Proposition $2.2.12(3)$, $a=b$ which is a contradiction. Hence, no more than one statement can be true.
+
+Now, we show at least one of the statements is true. We'll use induction. Fix $b$ and induct on $a$. Base case, $a=0$. $0 \le b$ for all $b$. This is because  $b=a \lor b \ne a$. If $b=a$, $0 \le b$ holds. If $b \ne a$, and we know $a = 0$, therefore, $b$ must be some positive number and hence $b > 0$. Therefore, we show that in both cases, $0 \le b$. Now suppose we have proven the proposition for $a$ and now we want to prove the proposition for $a++$. There are three cases: $a < b, a=b, a > b$. If $a>b$, by proposition $2.2.12(e)$, we get $a++ \le b$. This case holds. (Note, we show that $a++ = b \lor a++ < b$. I know we want to show only one statement holds overall but this part of the proof is about at least one of the statemnets is true, if both are true we don't care). If $a = b$. $a=b \implies a++ = b+1$. By defintion of greater than, $a++ \ge b$. Therefore, $a++ > b$ or  $a++ = b$. If  $a++ = b \implies a++ = a $ which cannot be the case. Therefore,  $a++ > b$. We are done with this case as well. If  $a < b$, then by Proposition $2.2.12(5)$, $a++ \le b$ and in both cases we are done with our induction. Hence proved.   
+
+\subsection{Proposition: Strong principle of induction}
+Suppose there exists a natural number $m_0$. Suppose we also have a property $P(m)$ for some natural number $m$ such that the following as true: If $P(m^{`})$ is true for all $m_0 \le m^{`} < m$, then $P(m)$ is true. Then we conclude $P$ is true for all $m \ge m_0$.
+
+\paragraph{Commentary}: Is strong principle of induction stronger than our Principle of Induction Axiom (Proposition 2.1.5)itself? If strong principle of induction is proved using Principle of Induction Axiom then it's not really a stronger claim than Principle of Induction Axiom. Then, why call it strong?
+
+The proposition hinges on the if then implication. It says that if proposition holds till $m$, it holds for $m++$. Note, this part is given, i.e., the implication itself is given as true. Then, we can conclude that $P$ is true for all $m$.
+
+
+There are no numbers before $m_0$. And we are given that if  $P(m`)$ is true for all numbers before $m$, then $P(m)$ is true. So,  $P(m_0)$ is true. 
+
+Let's talk about $P(m_1)$ then. It is given to us that if  $P(m`)$ is true for all numbers before  $m_1$, it implies $P(m_1$ is true. We know $P(m_0)$ is true. Hence, $P(m_1)$ is true.
+
+\textbf{This process of induction does feel like a trick but it hinges on a given if-then statement where it states that $P$ is true for all numbers before $m$, $P$ is true for $m$. Again, this is a given to us.}
+
+
+\section*{Exercises}
+\subsection*{2.2.1}
+ \paragraph{Q: } Prove Proposition $2.2.5$, i.e., $\left( a+b \right) +c = a + \left( b+c \right) $.
+
+\paragraph{Proof: } We'll prove this by induction. Fix $b,c$. Take $a=0$ for base case. $\left( 0+b \right) +c = b +c $. This was LHS. RHS side, $0+(b+c) = b+c$. Base case holds. We'll take the induction step. Assume the given property holds for $a$. We need to show  $\left( \left( a++ \right) +b \right) +c = \left( a++ \right) + \left( b+c \right) $.
+Take LHS, $\left( \left( a++ \right) +b \right) +c  = (\left( a+b \right) ++)+c = \left( (a+b)+c \right)++$. We only used the definition of addition for this manipulation. Take RHS, we'll get $\left( a+(b+c) \right)++ $ after similar manipulation. By the inductive step we know $a+(b+c) = (a+b)+c = k$ for some  $k$. LHS and RHS are equal. $k++ = k++$. Hence, induction closes here.
+
+\subsection*{2.2.2}
+\paragraph{Q:} Prove that if $a$ is a positive number then there exists exactly one number $b$ such that $b++ = a$. 
+\paragraph{Commentary: } I have a feeling for contradiction here. Clearly, I have to show it in two parts, first that there exists such an number $b$ such that $b=a++$ and that $b$ is unique. For the first part, we don't need a contradiction. 
+Hint says \textit{use induction}, so we'll try induction. 
+\paragraph{Proof: } Base case, take $a=1$. Clearly, there exists  $b = 0$ since $0++=1$. There isn't any other number so we are good with the base case. Induction assumption step. Say, there exists exactly one  number  $b$ for  $a$. We need to show there exists a number $c$ for  $a++$.  $a++= \left( b++ \right) ++ $. Here $b++ =c $. Since, we know there exists only one  $b$,  $b++$ is also unique. \todo{not satisfied with proof, try again}
+
+\subsection*{2.2.4}
+why(1): $b$ is a natural number. It either is $0$ or a positive number. 
+
+why(2): We need to show  $a > b \implies a++ > b$.  $a>b$, by defintion means  there exists  $n$ such that $a=b+n$. Adding  $1$ on both sides, $a++= b+\left( n++ \right) $. Clearly, by definition of greater than we can say  $a++ > b$.
+
+why(3): We need to show  $a=b \implies a++ > b$.  $a++=b++ \implies a++ = b+1$. Clearly, by defintion of greater than $a++ > b$. $\qed$  
+
+
+
+\subsection*{2.2.5}
+\paragraph{Q: Prove Proposition 2.2.14 Strong principle of induction}
+\paragraph{Proof:}
+$(P\left( m_0 \right)$ is true. ($P(m)$ is true for all  $m \ge m_i \ge m_0$ implies $P(m++)$ is true)) $\implies$  $P(m)$ is true $\forall m \in \mathbb{N}$.
+\paragraph{Commetary: } We'll use induction for this proof. The base case will be that $P(0)$ is true (we need to show that) and also as part of the base case, we need to show that $P(0)$ is true $\implies$, $P(0++)$ is true and that this implies $P(m)$ is true for all $m \in \mathbb{N}$. Then, as part of the induction step, we need to show if we assume  $A,B \implies C$ to be true for  $m$, then  $A,B \implies C$ is also true. Note, here $A$ is  $P(m_0)$ is true.  $B$ is $P(m_i) \implies P(m++) \forall m \ge m_i \ge m_0$ and $C$ is  $P(m) \forall m \in \mathbb{N}$ is true. Note, as part of the induction step as for the base case, we will assume that the first part of $B$ is true and show that the second part, i.e., the implication follows from it.
+
+Take the base case $m_0 = 0$. It is given to use that $A, B$ is true and we need to show  $C$ follows from them. $B$ is true, therefore the implication of it is true, i.e.,  $P(0++)$ is true. From this, we can say that $P(1)$ is true. So, again we have $P(0)$ is true and by $B$ we will get $P(1++)$ is true. This way, we can show $P(m)$ is true $\forall m \in \mathbb{N}$. We are done with the base case.
+
+
+Now, assume  $A,B \implies C$ is true for  $m$. We need to show  $A,B \implies C$ is also true. What do we get when we assume $A, B \implies C$ is true? Well, the exact statement that we need to prove. No point in repeating it here. What we need to show is that given  $P(m_0)$ is true, and $P(m++) \implies P((m++)++)$ is true, tells us that $P(m++)$ is true $\forall $m++$ \in \mathbb{N}$.
+Any $m \in \mathbb{N}$  is written as $(((0++)++)++)...$ where  $++$ operation is repeated  $m$ number of times. We are given $P(1) \implies P(2)$ and so on and so forth. So, $P(0) \implies P(1)$ and by using the same logic we'll show that $P(1) \implies P(2)$. In this way, since every positive number is some  $m++$, we have shown that $C$ is true  $\forall m++ \in \mathbb{N}$. Hence, induction closed. \todo{very bad proof, not satisfied, try again.}
+
+\subsection*{2.2.6}
+\paragraph{Given: } $P(m++) \implies P(m)$.  $P(n)$ is true.
+\paragraph{Show: } $P(m)$ is true $\forall m \le n$.
+\paragraph{Proof:} Assume base case is about $n=0$. We are given $P(0++) \implies P(0)$ is true. $P(m)$ is true trivially as there is  $m \neg \le0$ Base case holds. Assume,  $A \implies B, C$ is true and together they imply  $C$ is true. We need to show the same for $m+++$. Here $n=m++$. And as part of given we have  $P((n++)++) \implies P(n++)$, we need to show that  $P(m)$ is true $\for m \le n++$. Now, because of the given, $P(m)$ is true  $\forall m \le n$. We just need to show it also holds for  $n=m++$, But that is also given as part of the assumption that  $P(n++)$ is true. Hence, we are done with the induction. $\qed$. \todo{bad proof, not convinced}
+
+
+
+
+
+
+
+\chapter{Set Theory}
+\section*{Definition and Axiom count}
+\paragraph{Commentary: }What does obeying the axiom of substitution mean? Take example, for two natural numbers, $a,b$ we have $a=b$. Then, any other equation where $a$ is referred, I can substitute $b$ for it. Similarly, even for sets, we have the concept of equality. For any two sets,  $A,B$ we have defined equality, $A=B$. Therefore, we can write $x \in A$ as  $x \in B$.
+
+\section{Axiom}
+If  $A$ is a set, then $A$ is also an object. In other words, given two sets $A,B$ it is meaningful to ask if $A \in B$ or $B \in A$.
+
 
 
 
