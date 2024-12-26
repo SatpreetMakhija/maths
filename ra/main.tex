@@ -279,14 +279,159 @@ Any $m \in \mathbb{N}$  is written as $(((0++)++)++)...$ where  $++$ operation i
 
 \chapter{Set Theory}
 \section*{Definition and Axiom count}
-\paragraph{Commentary: }What does obeying the axiom of substitution mean? Take example, for two natural numbers, $a,b$ we have $a=b$. Then, any other equation where $a$ is referred, I can substitute $b$ for it. Similarly, even for sets, we have the concept of equality. For any two sets,  $A,B$ we have defined equality, $A=B$. Therefore, we can write $x \in A$ as  $x \in B$.
+There are 11 axioms used to construct set theory. These 11 axioms are called \textit{Zernelo-Frankel} axioms. There is a $12$th axiom called the \textit{Axiom of Choice}  that we don't need now but will need at some point of time. \todo{Why is Axiom of Choice needed/not needed now?} There are 13 definitions in this chapter. Note, these also include the defintion of functions, types of functions as well because the axioms make use of them in their statements.
+\todo{Why are definitions secondary to axioms?} While it is true that we can have infinite definitions and hence makes it redundant to keep a track of them but without defintions, 
+\paragraph{Commentary: }What does obeying the axiom of substitution mean? Take example, for two natural numbers, $a,b$ we have $a=b$. Then, any other equation where $a$ is referred, I can substitute $b$ for it. Similarly, even for sets, we have the concept of equality. For any two sets,  $A,B$ we have defined equality, $A=B$. Therefore, we can write $x \in A$ as  $x \in B$. \todo{Find if axiom of substitution is defined for operation or elements}
 
 \section{Axiom}
 If  $A$ is a set, then $A$ is also an object. In other words, given two sets $A,B$ it is meaningful to ask if $A \in B$ or $B \in A$.
 
+\section{Axiom}
+Empty set 
+
+\section{Axiom}
+Singelton and pair sets
+\paragraph{Commentary: } This axiom is about for a given object $a$, there exists a set  $S$ such that  $S={a}$, i.e.,  $a$ is the only element of  $S$. Another way of stating the same thing is by saying that if  $y \in S \implies y = a$. Similary, we have a pair set property for a set. Given two elements  $a,b$, there exists a set  $S$ whose only elements are  $a,b$.
+
+There is only one singleton set for each object $a$ by defintion $3.1.4$ (equality definition). Say, there were two singleton sets for $a$. Every element  $y$ of  $S_1$ would belong to  $S_2$ because  $y=a$ and by definition of  $S_2$ being a singleton set, each  $y \in S_2 \iff y=a$. Similarly,  every element of  $S_2$ belongs to  $S_1$. Hence,  $S_1 = S_2$.  
+
+\section{Axiom: Union of sets}
+Given two sets  $A,B$, there exists a set called /\textit{union} and written as  $A \cup B$ which elements belong to  $A$ or  $B$ or both. \todo{In set theory, why is union an axiom but intersection a definition?}
+
+\subsection*{3.1.12 Remark}
+If $A,B,A_1$ are three sets and $A=A_1$, then $A \cup B = A_1 \cup B$. By definition of equality, any $x \in A \implies x \in A_1$ and vice versa. Any element  $x \in A \cup B$ implies  $x \in A \lor x \in B$ by defintion of pairwise union. Since,  $x \in A \implies x \in A_1$, we will replace the belongs to part. We can do this because by the defintion of equality, $\in$ allows axiom of substitution. Therefore,  $x \in A \cup B \implies x \in A_1 \cup B$ and vice versa. Hence, $A \cup B = A_1 \cup B$.  
+
+\paragraph{Commentary: } This axiom allows us to create larger sets, i.e., sets with more than two elements. 
+
+\subsection*{3.1.13 Lemma} $\left( A \cup B \right) \cup C = A \cup \left( B \cup C \right) $ (associativity)
+
+\paragraph{Commentary: } To prove this we have a statement which needs us to show all elements on the side of the set $X$ also belong to the set $Y$ on the right hand side and vice versa.
+
+\paragraph{Proof: } Let $x \in \left( A \cup B \right) \cup C$. We need to show $x \in A \cup \left( B \cup C \right) $. First, say $x \in A \cup B$. $x \in A \cup \left( B \cup C \right) = x \in A \lor x \in B \cup C$. If $x \in A \implies x \in A \lor x \in B \cup C$. If $x \in B$, we need to show  $x \in A \lor x \in B \cup C $ holds. If  $x \in B \implies x \in B \cup C$. (why?) because  $x \in B \cup C = x \in B \lor x \in C$ and  $x \in B$ holds.
+
+Now, we need to show if $x \in C \implies x \in A \cup \left( B \cup C \right) $. Again $x \in C \implies x \in B \cup C$. We are done with this second part as well. 
+
+Similarly, we can show from LHS to RHS as well. Hence proved.  $\qed$
+
+\subsection*{3.1.18 Proposition} Sets are partially ordered by set inclusion. If  $A \subseteq B$, and  $B \subseteq C$, then  $A \subseteq C$. 
+
+\section{Axiom: Axiom of specification}
+\paragraph{Commentary}: This axiom allows us to create subsets from larger sets.
+
+Given a set $S$ and a property  $P$, there exists a subset of  $S$, such that elements of  $x \in S$, for which  $P(x)$ is true, belong to this subset.
+
+$y \in \left\{ x \in A : P(x) \right\} \iff y \in A \land P(y) $. This is how we mathematically we capture the above statement. 
+
+\subsection*{3.1.23 Definition (Intersection)}
+The \textit{intersection} of two sets written as $S_1 \cap S_2$ is defined to be the set $S_1 \cap S_2 := \left\{ x \in S_1 : x \in S_2 \right\} $. Note, how beautifully we used the axiom of specification which is a more general form of axiom where we talk about a generic property of the element and separate the set according to that property. Belongingness is also a property. This axiom, thus, gives us the ability to define the concept of intersection.
+
+
+\section*{3.1.28 Sets form a boolean algebra}
+\paragraph{Commentary: } \todo{Sets form a boolean algebra means what?} Is it the case that there are other objects that form a boolean algebra. What properties are quired for an object to satisfy boolean algebra? What lies at the heart of boolean algebra?
+
+\todo{Why does the complementation relation $A \implies X/\ A$ create this duality in Morgan's Laws, i.e., unions convert into intersectin and vice versa?}
+
+\section{Axiom of replacement}
+\paragraph{Commentary: } This axiom helps us in converting one element into another of a set. Say, we have a set $S = {1,2,3}$ and we want to convert it to  $S = {4,5,6}$, none of the existing axioms will allow us to do that. Why are existing axioms not enough?
+
+
+Suppose that for any object $x \in S$ and  $y$, there exists a property  $P(x,y)$ such that for every  $x$, there exists at most one  $y$ such that  $P(x,y)$ is true, then, there exists a set $\left\{ y:P(x,y) for some x \in S\right\} $ such that for any object $z$ in this set we have  $z \in \left\{ y:P(x,y) for some x \in S \right\} \iff P(x,z) is true for some x \in S $. 
+
+\paragraph*{How will you combine axiom of separation with axiom of replacement?} Let's define a set using axiom of separation $\left\{ x:P(x) \right\} $. Now, how to apply axiom of replacement on this. Assume $\left\{ f(x): x \in A; P(x) \right\} $. 
+
+\section{Axiom: Infinity}
+\paragraph{Commentary: }This axiom says that there exists a set $N$ whose elements satisfy the property of Peano's axioms. Hence,  this axiom helps us show that $N$ is a set.
+
+\section*{Exercises}
+\subsection*{3.1.1} Reflexive, symmetric and transitive is followed by the defintion of equality. Reflexive here means $A = A$, symmetric means  $A_1 = A_2 \implies A_2 = A_1$ and transitive means $A_1 = A_2 \land A_2 = A_3 \implies A_1 = A_3$.
+Reflexive is simple because each  $x \in A \implies x \in A$. Symmetric because the if part gives us $A_1 = A_2$. And by the defintion of equality, $A_2 = A_1$ because any element $x \in A_2 \implies x in A_1$ by defintion of equality of the given statement. Transitivity. Let $A_1 = A_2$ and $A_2 = A_3$. We need to show $A_1= A_3$. Let  $x \in A_1$. Since $A_1 = A_2$, $x \in A_2$ and similarly $x \in A_3$. Going in reverse direction also gives us the same situation, i.e.  $x \in A_3 \implies x \in A_1$. Hence, by defintion of equality $A_1 = A_3$. $\qed$
+ 
+\subsection*{3.1.2}
+eq, 1,2,3 prove sets  $\phi, \left\{ \phi \right\} , \left\{ \left\{ \phi \right\}  \right\}, \left\{ \phi, \left\{ \phi \right\}  \right\}  $ are distinct, i.e., none of them are equal. This is easy so leaving it.
+Just to show that I am capable, we'll prove $\phi, \left\{ \phi \right\} $ are not equal. By definition of $\phi$, there does not exists an  $x \in \phi$ but  $\phi \in \left\{ \phi \right\} $. Hence, not equal.  
+\subsection*{3.1.3}
+
+
+\subsection*{3.1.11}
+Show that axiom of replacement implies axiom of specification. Given a set $S$ and a property  $P(x,y)$ pertaining to  $x,y$ such that for every  $x$, there exists at least one $y$ such that $P(x,y)$ is true, then there exists a set $\left\{ y: P(x,y) for some x \in S \right\} $. Axiom of specification is about separating the set into two depending on a property $P$ and which $x \in S$ holds true for $P$ and which ones don't. Let us define a set with those $y$ such that $P(x, y)$ as  that $P(x)$ is true. Therefore  $y \in S$ only. Hence, we show that axiom of specification is implied from axiom of replacement.  $\qed$
 
 
 
+
+
+\subsection*{Definition 3.6.1 Equal cardinality} Two sets $X$ and  $Y$ are said to have  \textit{equal cardinality} iff there exists a bijection between  $X$ and  $Y$.
+
+Note, we are moving to the next chapter because there is not much to gain from this chapter apart from exercising how to rigorously write mathematics. I know this is the motive of this book but we need to be pragmatic and reach the heart of this book that starts from real numbers. 
+
+\chapter{Integers and rationals}
+\section*{Definition and axiom count}
+
+\section{Integers}
+We need to define subtraction and we need to define integers. subtraction is an operation and integers is an entity. From the natural numbers construction, we saw, we can define entities by the properties or axioms they hold. Therefore, we will define integers as simply a notation $a--b$. Later on, we'll see that we can just replace $--$ with  $-$.
+
+\subsection{Definition: Integers}
+An integer is an expression of the form  $a--b$, where $a,b$ are natural numbers. Two integers $a--b$ and $c--d$ are only equal iff $a+d=b+c$. Note, we are expressing the notion of subtraction using the notion of addition only because the sign $--$ is just a symbol at this point of time without any meaning of an operator as such. We took four natural numbers and defined a relation between them.  
+
+\subsection{Addition and multiplication of integers}
+The sum of two integers $a--b$ and  $c--d$ is defined as  $(a--b) + (c--d) := (a+b) -- (c+d)$ 
+
+The product of two integers $a--b$ and $c--d$ is defined as $(a--b) * (c--d) := ac -- bd$. Note, how this is similar to as if the integer is composed of two parts and when two integers interact via an operation, only the parts that are of the same type interact.
+
+
+\subsection{Addition and Multiplication are well defined for integers}
+We need to show if $a,b,a_1,b_1, c,d$ are natural numbers and $a--b=a_1--b_1$, then, $(a--b) + (c--d) = (a_1--b_1) + (c--d)$ and $(a--b) * (c--d) = (a_1-b_1) * (c--d)$ and we also need to show the symmetric-ness of these two equations.
+
+integer as a pair of natural numbers
+integer has a negation
+subtraction is addition with the negation of integer
+a - b = a + (-b) = (a--0) + (0--b) = a -- b
+7 - 3 = a + (-3) = (a--0) + (0--3) = 7 -- 3 but here still we haven't reached the stage
+of taking away or basically we haven't been able to represent 7 -- 3 rather than what it is already written as.
+\subsection*{Remark on how subtraction is conceived from addition}
+Note, there is no subtraction in this world defined by Tao. Here's how we get the same quality though. First, we have the concept of negation of an integer. Note, we have defined an integer as a pair of natural numbers written as $a--b$. We define the negation of an integer as  $-(a--b) = (b--a)$. We define subtraction as addition of the negation of the integer, i.e.,  $a-b = a + (-b) = (a--0) + (0--b)$. But, this doesn't tell us how to actually do the reduction of value that we think of. Say,  $7-3 = (7--0)+(0--3)$. Sure, we have expanded this by how do actually get  $4$?  Note, two integers  $a--b$ and  $c--d$ are equal iff $a+d=b+c$. Therefore,  $7--3 = 4--0 $ because  $7+0=3+4$. 
+
+\section{Rationals}
+\subsection*{Rationals are not well ordered}
+Well ordered means that you can pinpoint the smallest element in a set. You cannot do that with a set of rational numbers. Consider $\left\{ n: 0 < n < 1, n \in \mathbb{Q} \right\} $. For any element you choose, you can find an even smaller element. There is an infinite descent when it comes to rational numbers.
+
+\subsection*{Rationals don't contain all numbers}
+We complete this chapter by showing that rationals cannot represent all numbers. There does not exist a number $x$ such that  $x^2 = 2$. If we are able to do this proof and that why such numbers mentioned above don't exist, we have gotten the most out of this chapter. \todo{Prove principle of infinite descent}
+
+
+
+
+\section*{Exercises}
+\subsection*{4.1.1} Show that the definition of integers is both reflexive and symmetric. Reflexivity is a property of a relation $R$, i.e., if  $xRx$, then the property is reflexive. Here, the relation $R$ is  $a--b = c--b \iff a+d = b+c$. Then, does this relation hold when both  $a-b$ and  $c-d$ is the same. Let this new integer be  $l--m$ that represents both of them. Then, by the definition of  $R$,  $l--m = l--m \iff l+m = m +l$. Clearly, the definition holds as  $l+m=m+l$ by the symmetric property of addition. 
+
+Symmetric means that $jRk \iff kRj$. Here, $R$ holds  iff $a+d=c+b$. Now, $jRk$ here is  $a+d=c+b$ and clearly  this can be written as  $d+a=b+c$ which is the defintion of  $b--a$. Hence,  $jRk \implies kRj$ and similarly we can show  $kRj \implies jRk$. $\qed$. 
+
+
+
+\chapter{Real numbers}
+\section{Cauchy sequence}
+\subsection*{5.1.8 Definition: Cauchy sequence}
+A sequence of rational numbers is said to a cauchy sequence iff for every $\epsilon > 0$, 
+the sequence is eventually $\epsilon$-steady. In other words, for every rational number $\epsilon > 0$, there exists a  $N \ge 0$ such that  $d(a_i, a_j) \le \epsilon$ for every  $i, j \ge N$.
+
+\subsection*{5.1.11 Proposition} The sequence $a_n := 1/n$ is a cauchy sequence. 
+ \paragraph{Commentary}: We need to show that for any given $\epsilon > 0$, there exists a natural number $N$ such that $|\frac{1}{a_i} - \frac{1}{a_j} |$ \le \epsilon \forall i,j \ge $N$.
+
+\paragraph{Proof: }
+Assume we have an arbitrary $\epsilon > 0$. We need to find an appropriate  $N$ such that  $\forall i,j \ge N$,  $|\frac{1}{a_i}-\frac{1}{a_j}| \le \epsilon$. Note, $i \ge N \therefore \frac{1}{i} > 0$. (why (1)?). Similarly, $j \ge N \therefore \frac{1}{j} \le \frac{1}{N}$. (why 2?). $\therefore |\frac{1}{i}- \frac{1}{j}| \le \frac{1}{N}$. Now, it should be enough to show that $\frac{1}{N} \le \epsilon$ or $N > \frac{1}{\epsilon}$. We know that for every ration, there exists a natural number bigger than it by proposition $4.4.1$. $\qed$
+
+
+Answer to why (1): $i \ge N \implies \frac{1}{i} \ge 0$
+ Assume $\frac{1}{i} < 0$. Therefore, by defintion of $<$, there must exists a positive rational  $m$ such that  $\frac{1}{i} + \frac{l}{m} = 0$. By the defintion of addition in fractions, $\frac{m+il}{im} = \frac{0}{1}$. By the defintion of equality of rationals, $m+il = 0*im \implies m + il = 0$.  $l, m \ne 0 $ as it's a positive rational number. Therefore, we have a case where two positive rationals sum up to  $0$ and that is not possible. Hence, a contradiction. Therefore,  $\frac{1}{i} \ge 0$. Why 2 will also have a similar reasoning.
+
+Note, how difficult it is to show that a sequence is a cauchy sequence. We need to explicitly find a $N$ and then show that  $\forall i, j \ge N$, their absolute difference is  $\le \epsilon \forall \epsilon > 0$.
+
+\subsection*{Lemma: 5.1.15 Cauchy sequences are bounded}
+Every cauchy sequence is bounded. 
+\paragraph{Commentary: } Bounded means that the absolute value of every element in the sequnece is bounded by some rational $M$. Cauchy sequence means that the difference between the two consecutive elements in the sequence gets smaller and smaller.
+
+\paragraph{Proof: }Since, we have a cauchy sequence, we know we will have a number $n$ after which the sequence is  $1$-steady. So, we have two sequences now. One before  $1$-steady and one after $1$-steady. First one is bounded because it is finite. But, why would the second  $1$-steady sequence be bounded? $1$-steady means that the difference between any two elements in the sequence is less than or equal to $1$.  An infinite sequence is bounded if there exists $M$ such that  $a_i \le M \forall n \ge 0$. Clearly, because any consecutive $d(a_i, a_j) \le 1$,
+$|a_i - a_j| \le 1$. If $a_i - a_j$ is positive, we have  $a_j \le 1 - a_i$. If negative, we have  $-(a_i - a_j) \le 1 \implies a_j - a_i \le 1 \implies a_j \le 1 + a_i$. In both cases, we found an upper bound for the element. Hence, the second part is also bounded. 
+\qed
 
 
 
