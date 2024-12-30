@@ -397,8 +397,23 @@ Well ordered means that you can pinpoint the smallest element in a set. You cann
 \subsection*{Rationals don't contain all numbers}
 We complete this chapter by showing that rationals cannot represent all numbers. There does not exist a number $x$ such that  $x^2 = 2$. If we are able to do this proof and that why such numbers mentioned above don't exist, we have gotten the most out of this chapter. \todo{Prove principle of infinite descent}
 
+\subsection*{4.4.4 Proposition}
+There does not exist any rational number $x$ for which  $x^2 = 2$
+ \paragraph{Proof: }
+Clearly, $x \ne 0$. If it were so, we'll have $0^2 = 2 \implies 0*0 = 0 \ne 2$. Assume $x$ is positive. We can assume so because if  $x$ is actually negative, we can replace  $x$ with  $-x$ as  $x^2 = \left( -x \right) ^2$.
+Therefore, there exists $x = \frac{p}{q}$ such that for some $p,x$, $\left( \frac{p}{q} \right)^2 = 2$ which we can rearrage as $p^2 = 2q^2$.
+
+We define a natural number $p$ to be $even$ if there exists a natural number $k$ such that $p=2k$ and odd if  there exists  $k$ such that  $p=2k+1$. Every natural number is either even or odd but not both. The structure is $A \lor B \land \lnot \left( A \land B \right) $. We can show it in two steps. Let $A$ be the statement that  $p$ is even and  $B$ be $p$ is odd. We'll first show $A$ and $B$ cannot be true together. And then we'll show one of them is atleast true. Let $p$ be both even and odd. Then, there exists $k$ such that $p$ is even and there exists $l$ such that  $p$ is odd. Therefore, $2k = 2l + 1$ by defintion of even and odd. Either $k=l \lor k > l \lor k < l$. If $k=l$,  $0 = 1$. Contradiction.  If  $k > l$, there exists  $n$ such that  $k = l + n$.  $2l + 2n = 2l + 1 \implies n + n = 1$. Now,  $n \ne 0$, so it is a positive number. There cannot be a positive number  $n$ such that  $n+n = 1$ as for any  $n$,  $n+n > 1$. Therefore, contradiction and  $k > l$ cannot be the case. Similarly, we can show it cannot be the case that  $k < l$. Therefore, we've shown $p$ cannot be both even and odd. Now, we need to show that atleast one of the statements is true, i.e., for any $n$ natural number, there exists  $k$ such that either  $n = 2k$ or  $n = 2k + 1$.
+
+We'll show that atleast one of the statements holds by induction. Base case $n = 0$.  At $k=0$. $2*0 = 0$. Base case holds. Assume there exists $k$ such that  $n$ is either odd or even. Now, we need to show that  $n++$ is also either odd or even. If $n$ is odd,  $n=2k + 1$. Then  $n+1= 2k+2 \implies n++=2(k+1)$. Therefore,  $n++$ is even. If $n$ is even, we show  $n++$ is odd. Therefore, $n++$ is either odd or even. We close induction here.
+
+Therefore, we showed that every natural number $p$ is either odd or even.
+
+Now, we show that if $p$ is odd then $p^2$ is also odd and if $p$ is even, $p^2$ is also even.
+Assume $p$ is odd. Therefore, there exists  $k$ such that $p = 2k+1$. Now,  $p^2 = p*p = (2k+1)(2k+1) = (2k+1)2k + (2k+1)1 = 4k + 2k + 2k + 1 = 8k+1$. Therefore,  $p^2$ is also odd as at  $k_1 = 8k$, it satisfies the defintion of odd number. Similarly, we can show that if  $p$ is even, $p^2$ is even. 
 
 
+Now, we go back to our proof we started with at the beginning. We have two important lemmas with us. Every $p$, nautural number, is either odd or even but not both and that if  $p$ is odd then $p^2$ is also odd. If  $p$ is odd  $p^2$ is also odd. But, we are given that  $p^2 = 2q^2$. Therefore,  $p$ cannot be mk$p$ is even. Therefore, there exists $k$ such that  $p = 2k$. Inserting $p=2k$ into $p^2 = 2q^2$, we get $q^2 = 2k^2$. Since the solution pair $p,q$ and  $q,k$ share the same equation and it's just the variable name change, they both will satisfy our equation  $x^2=2$. Thus, if we rewrite $p,q$ as  $p_1 = q, q_1=k$, we moved from one solution $p,q$ to another  $p_1,q_1$ of our equation. The catch here is that as we move from one solution to another, the value of  $p$ keeps on decreasing and $p$ is positive integer. But, we cannot have $p$ decreasing forever. This contradicts the principle of infinite descent. Hence, our initial assumption, that there exists such an $x$ such that  $x^2 = 2$ is false. $\qed$. Note, this is a momentous moment because we have shown rationals cannot represent all numbers.     
 
 \section*{Exercises}
 \subsection*{4.1.1} Show that the definition of integers is both reflexive and symmetric. Reflexivity is a property of a relation $R$, i.e., if  $xRx$, then the property is reflexive. Here, the relation $R$ is  $a--b = c--b \iff a+d = b+c$. Then, does this relation hold when both  $a-b$ and  $c-d$ is the same. Let this new integer be  $l--m$ that represents both of them. Then, by the definition of  $R$,  $l--m = l--m \iff l+m = m +l$. Clearly, the definition holds as  $l+m=m+l$ by the symmetric property of addition. 
@@ -434,16 +449,30 @@ $|a_i - a_j| \le 1$. If $a_i - a_j$ is positive, we have  $a_j \le 1 - a_i$. If 
 \qed
 
 
+\section{Equivalent Cauchy Sequence}
+\subsection*{Definition 5.2.6 Equivalent sequence}
+Two sequences $\left( a_n \right)_{n=0}^{\infty} $ and  $\left( b_n \right)_{n=0}^{\infty} $ are said to equivalent iff for every $\epsilon > 0$, there exists  $N \ge 0$ such that $|a_i - b_i| \le \epsilon \forall i \ge N$.  In other words, for every rational $\epsilon > 0$, the two sequences are  $\epsilon$-close.
+
+\section*{Exercises}
+\subsection*{5.2.1}
+Given two sequences $\left( a_n \right)_{n=1}^\infty$ and $\left( b_n \right)_{n=1}^\infty$,  $\left( a_n \right)_{n=1}^\infty$ is a cauchy sequence iff  $\left( b_n \right)_{n=1}^\infty$ is a cauchy sequence.
+
+\paragraph{Commentary: } What is the difference between a sequence and a  cauchy sequence? In a cauchy sequence, the difference between any two numbers in the sequence keeps on decreasing, whereas, a sequence is just a sequence. Two sequences are equivalent when the difference between the two keeps on decreasing as well. Clearly, if we want two sequences to be equivalent, i.e., the difference to keep on decreasing between the two, both of them individually also need to keep on decreasing because imagine if one of them is increasing, the other one keeps on decreasing, so the difference between the last element of the two sequence will keep on increasing and then they cannot be equivalent which we know they are. So, one increasing and other decreasing is not possible. What about both increasing? No, we don't need to consider this situation because our iff condition is saying that if one of them is decreasing, the other one has to be too which we just discussed. 
+
+\paragraph{Proof: }
+We'll show $A$ implies $B$ and $B$ implies $A$. This is the structure of our proof. Assume  $\left( a_n \right)_{n=1}^\infty$ is a Cauchy sequence. Also, assume  $\left( b_n \right)_{n=1}^\infty$ is not a Cauchy sequence. Since two two sequences are equivalent, for every $\epsilon \exists N$ such that $|a_n - b_n| \le \epsilon \forall n \ge N$. Assume for $\epsilon_1$,  $\left( b_n \right)_{n=1}^\infty$ does not have a corresponding  $N$ for which this sequence can be a Cauchy sequence. Since, $a_n$ sequence is Cauchy, let it become cauchy at $n_1$. Then, $|a_m - a_n| \le \epsilon \forall m,n \ge n_1$. For the same $\epsilon$,  $|b_m - b_n| \ge \epsilon$.
 
 
 
+We know that for every $\epsilon$, there exists  $N$ such that $|a_n-b_n| \le \epsilon \forall n \ge N$.  Take two values $m,n \ge N$, for both of them, we have  $|a_n - b_n| \le \epsilon$ and  $|a_m - b_m| \le \epsilon$. Adding these two, we get $|a_n-b_n| + |a_m - b_m| \le 2\epsilon$. We'll take these case by case, simple case first. Assuming that both values turn out to be positive, we have  $a_n-b_n+a_m-b_m \le 2\epsilon$. Since the sequence  $a_n$ is a cauchy sequence, we can find such  $m,n$ that $a_m-a_n \le epsilon$. Basically, I will show here that this will lead to $b_n$ 's sequence satisfying the cauchy sequence definition and because of that we have a contradiction as we assumed $b_n$ 's sequence to not be a cauchy sequence. \todo{Complete proof}   
 
 
 
+\subsection*{5.2.2} Let $\epsilon > 0$ and the two sequences  $\left( a_n \right)_{n=0}^\infty$ and $\left( b_n \right) _{n=0}^\infty$ are $\epsilon$-close. We need to show that $a_n$ is bounded iff $b_n$ is bounded.
+\paragraph{Commentary: } Here, the difference between the two sequences is eventually between $\epsilon$. Now, if one of the sequences is  bounded, the other one has to be bounded too. This is because say one is bounded and the other is not. For any point of time in the sequence for $a_n$ (which we assume to be bounded), $b_n$ can be any value because it is not bounded. This will mean it will get difficult to keep their absolute difference in the given $\epsilon$ range. Hence,  $b_n$'s sequence will also be bounded.  
+\paragraph{Proof: } Since, the two sequences are $\epsilon$-close, there exists $N$ such that  $|a_n - b_n| \le \epsilon \forall n \ge N$. We'll assume that to be  $N$ only. Also assume $a_n$ is bounded. Let that value of bound be $M$. $\forall n \ge 0, a_n \le M$ and let $b_n$ be not bounded. Take $|a_N-b_N| \le \epsilon \implies |M-b_N| \le \epsilon$. But at value $b_N = M + \epsilon + 1$, this equation will not be satisfied. Therefore  every  $b_N$ must be smaller than this value. Hence,  $b_n$ 's sequence is also bounded.
 
-
-
-
+What I am not satisfied with is that after $N$ every number  $b_n$ in the sequence will be smaller than $M+\epsilon + 1$, yes, that's true, but this does not stop  $b_n > M $ for some  $n < N$. Oh wait,  $\epsilon$-close means that for all $|a_i -b_i| \le \epsilon$. Then, our proof will work because  $|M-b_i| \le \epsilon$ needs to hold for all  $i$. And this will given us our bound for  $b_n$'s sequence.
 
 
 
